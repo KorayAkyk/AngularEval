@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Statistique} from '../models/statistique';
+import {HostListener } from "@angular/core";
 
 @Component({
     selector: 'app-statistique',
@@ -22,4 +23,20 @@ export class StatistiqueComponent implements OnInit {
     ngOnInit(): void {
     }
 
+
+    @HostListener('unloaded')
+    ngOnDestroy(): void {
+      console.log("ON EST LA");
+    }
+ 
+    delete(): void {
+        console.log(this.statistique.identifiant);
+        fetch('https://stats.naminilamy.fr/' + this.statistique.identifiant,
+            {method: 'DELETE'}).then(resp => {
+            if (resp.status === 200) {
+                this.ngOnDestroy();
+                console.log("API DESTROY");
+            }
+        });
+    }
 }
