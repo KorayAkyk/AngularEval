@@ -22,10 +22,23 @@ export class AppComponent{
     setTimeout(() => {
         this.listStatistiques.push(new Statistique('TEST3', 'POP3', '3', 'C'));
     }, 5000);
+
+    this.listStatistiques=[];
+
+    fetch('https://stats.naminilamy.fr/')
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+      data.forEach((stat: { id: string; title: string; value: number; appreciation: string; })=>{
+        this.listStatistiques.push(new Statistique('' + stat.id,'' +stat.title,''+stat.value,''+stat.appreciation));
+
+      })
+        console.log(data);
+    })
+    .catch((err) => {
+        console.error(err);
+    });
   }
-  
- 
-
-
 }
 
