@@ -1,3 +1,4 @@
+<!-- 
 {{statistique1.identifiant}}
 {{statistique1.titre}}
 {{statistique1.valeur}}
@@ -8,6 +9,11 @@
 {{statistique2.valeur}}
 {{statistique2.appreciation}}
 
+<app-statistique></app-statistique>
+<app-statistique></app-statistique>
 
-<app-statistique></app-statistique>
-<app-statistique></app-statistique>
+-->
+
+
+
+<app-statistique *ngFor="let stat of listStatistiques" [statistique]="stat"></app-statistique>

@@ -11,12 +11,21 @@ export class AppComponent{
   title = 'angular';
   public statistique1: Statistique;
   public statistique2: Statistique;
+  public listStatistiques: Statistique[];
 
   constructor(){
-    this.statistique1 = new Statistique('“fa1f5f40','Popa','60293','DEFET')
-    this.statistique2 = new Statistique('“fa68546','Pop1','60','DE')
-  }
+    this.statistique1 = new Statistique('TEST1','POP1','1','A')
+    this.statistique2 = new Statistique('TEST2','POP2','2','B')
 
+    this.listStatistiques = [this.statistique1, this.statistique2];
+
+    setTimeout(() => {
+        this.listStatistiques.push(new Statistique('TEST3', 'POP3', '3', 'C'));
+    }, 5000);
+  }
   
+ 
+
+
 }
 
