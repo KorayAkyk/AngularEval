@@ -38,5 +38,8 @@ export class StatistiqueComponent implements OnInit {
                 console.log("API DESTROY");
             }
         });
-    }
+      }
+    borderColor(): string {
+      return this.statistique.appreciation === 'ERROR' ? 'border: dashed red;' : 'border: dashed green;';
+  }
 }
